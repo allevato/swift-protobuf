@@ -422,3 +422,26 @@ private func fixed3ByteBase128(in buffer: UnsafeRawBufferPointer, atByteOffset b
     let rawBits = UInt32(littleEndian: buffer.loadUnaligned(fromByteOffset: byteOffset, as: UInt32.self))
     return Int((rawBits & 0x00007f) | ((rawBits & 0x007f00) >> 1) | ((rawBits & 0x7f0000) >> 2))
 }
+
+/// A placeholder submessage deinitialization function used by the layouts of messages that do not
+/// have any submessages.
+@_spi(ForGeneratedCodeOnly)
+public func _invalidDeinitializeSubmessage(
+    for token: _MessageLayout.SubmessageToken,
+    field: FieldLayout,
+    storage: _MessageStorage
+) {
+    preconditionFailure("This should have been unreachable; this is a generator bug")
+}
+
+/// A placeholder submessage copy function used by the layouts of messages that do not have any
+/// submessages.
+@_spi(ForGeneratedCodeOnly)
+public func _invalidCopySubmessage(
+    for token: SwiftProtobuf._MessageLayout.SubmessageToken,
+    field: SwiftProtobuf.FieldLayout,
+    from source: SwiftProtobuf._MessageStorage,
+    to destination: SwiftProtobuf._MessageStorage
+) {
+    preconditionFailure("This should have been unreachable; this is a generator bug")
+}
